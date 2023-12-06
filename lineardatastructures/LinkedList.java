@@ -83,6 +83,39 @@ public class LinkedList {
         return true;
     }
 
+    public Node nthLastNode(int n) {
+        Node currentNode = this.head;
+        Node delayedNode = null;
+        int count = 0;
+
+        while (currentNode != null) {
+            currentNode = currentNode.getNextNode();
+            if (count >= n - 1) {
+                if (delayedNode == null) delayedNode = this.head;
+                else delayedNode = delayedNode.getNextNode();
+            }
+            count++;
+        }
+
+        return delayedNode;
+    }
+
+    public Node findMiddle() {
+        // Create your function here:
+        Node fastPointer = this.head;
+        Node slowPointer = this.head;
+
+        while (fastPointer != null) {
+            fastPointer = fastPointer.getNextNode();
+            if (fastPointer != null) {
+                fastPointer = fastPointer.getNextNode();
+                slowPointer = slowPointer.getNextNode();
+            }
+        }
+
+        return slowPointer;
+    }
+
     public String printList() {
         String output = "<head> ";
         Node currentNode = this.head;
