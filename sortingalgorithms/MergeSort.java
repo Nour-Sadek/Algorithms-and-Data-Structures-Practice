@@ -48,10 +48,4 @@ public class MergeSort <T extends Comparable<T>> {
         return merged;
     }
 
-    public static void main (String[] args) {
-        List<Integer> inputArr = List.of(3, 5, 2, 90, 4, 7);
-        MergeSort<Integer> sorter = new MergeSort<Integer>();
-        System.out.println(sorter.sort(inputArr));
-    }
-
 }
