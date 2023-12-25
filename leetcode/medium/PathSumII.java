@@ -112,4 +112,45 @@ public class PathSumII {
 
     }
 
+    // Recursive implementation of the required function
+    public List<List<Integer>> pathSumRecursive(TreeNode root, int targetSum) {
+        List<List<Integer>> output = new ArrayList<>();
+
+        List<Integer> path = new ArrayList<>();
+
+        if (root == null) return output;
+
+        return helper(root, targetSum, 0, path, output);
+    }
+
+    private List<List<Integer>> helper(TreeNode node, int targetSum, int pathSum, List<Integer> path, List<List<Integer>> output) {
+
+        List<Integer> temp = path;
+        path = new ArrayList<>();
+
+        for (int num: temp) {
+            path.add(num);
+        }
+
+        path.add(node.val);
+        pathSum += node.val;
+
+        if (node.left == null && node.right == null) {
+            if (pathSum == targetSum) {
+                output.add(path);
+            }
+        } else {
+            if (node.left != null) {
+                output = helper(node.left, targetSum, pathSum, path, output);
+            }
+
+            if (node.right != null) {
+                output = helper(node.right, targetSum, pathSum, path, output);
+            }
+
+        }
+
+        return output;
+    }
+
 }
