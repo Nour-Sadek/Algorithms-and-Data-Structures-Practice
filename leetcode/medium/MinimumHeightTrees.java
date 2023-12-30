@@ -49,24 +49,23 @@ public class MinimumHeightTrees {
 
         // Determine the nodes that are not leaves (a node is a leaf if it only appears in one edge)
         Set<Integer> notLeaves = new HashSet<>();
-        Map<Integer, Integer> counts = new HashMap<>();
-        Map<Integer, Set<Integer>> graph = new HashMap<>();
+        int[] counts = new int[n];
+        List<Set<Integer>> graph = new ArrayList<>();
         for (int i = 0; i < n; i++) {
-            counts.put(i, 0);
             // All nodes are not leaves until proven otherwise :)
             notLeaves.add(i);
-            graph.put(i, new HashSet<>());
+            graph.add(new HashSet<>());
         }
 
         for (int[] edge: edges) {
-            counts.put(edge[0], counts.get(edge[0]) + 1);
-            counts.put(edge[1], counts.get(edge[1]) + 1);
+            counts[edge[0]] = counts[edge[0]] + 1;
+            counts[edge[1]] = counts[edge[1]] + 1;
             graph.get(edge[0]).add(edge[1]);
             graph.get(edge[1]).add(edge[0]);
         }
 
         for (int i = 0; i < n; i++) {
-            if (counts.get(i) == 1) notLeaves.remove(i);
+            if (counts[i] == 1) notLeaves.remove(i);
         }
 
         // perform depth-first search from all nodes that are not leaves and determine the MHT for each
