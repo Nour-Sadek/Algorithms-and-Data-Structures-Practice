@@ -54,7 +54,11 @@ public class ThreeSum {
                     if (possible == 0) {
                         List<Integer> combo = List.of(firstFixed, secondFixed, nums[k]);
                         if (!output.contains(combo)) output.add(combo);
-                    }
+                        break;
+                    } else if (possible > 0 && k == j + 1) {
+                        j = nums.length;
+                        break;
+                    } else if (possible > 0) break;
                 }
 
                 j++;
