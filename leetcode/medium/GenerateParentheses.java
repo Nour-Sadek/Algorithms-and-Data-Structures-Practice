@@ -1,5 +1,9 @@
 package leetcode.medium;
 
+import java.util.List;
+import java.util.ArrayList;
+import java.util.Stack;
+
 /*
 
 Given n pairs of parentheses, write a function to generate all combinations of well-formed parentheses.
