@@ -1,5 +1,9 @@
 package leetcode.medium;
 
+import java.util.Arrays;
+import java.util.List;
+import java.util.ArrayList;
+
 /*
 
 Given an integer array nums, return all the triplets [nums[i], nums[j], nums[k]] 
